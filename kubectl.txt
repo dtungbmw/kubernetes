@@ -1,0 +1,5 @@
+kubectl config current-context # check to see the current k8s context
+kubectl config get-contexts # list all context
+kubectl config use-context CONTEXT_NAME # set context
+
+gcloud beta container clusters get-credentials kubernetes-prod --region us-west1 --project deep-learning-elk # set to prod cluster
