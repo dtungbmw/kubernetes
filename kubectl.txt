@@ -3,3 +3,12 @@ kubectl config get-contexts # list all context
 kubectl config use-context CONTEXT_NAME # set context
 
 gcloud beta container clusters get-credentials kubernetes-prod --region us-west1 --project deep-learning-elk # set to prod cluster
+
+helm init --client-only
+helm list -a
+helm create ml-kafka-producers-chart
+
+docker build -f Dockerfile -t ml_kafka_producers .
+docker tag ml_kafka_producers gcr.io/deep-learning-elk/ml_kafka_producers:latest
+ gcloud auth configure-docker
+ docker push  gcr.io/deep-learning-elk/ml_kafka_producers:latest
